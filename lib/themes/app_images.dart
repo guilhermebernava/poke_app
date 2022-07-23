@@ -8,4 +8,6 @@ class AppImages {
   static const logo = 'assets/images/logo.png';
   static const groupBalls1 = 'assets/images/group_balls_1.png';
   static const groupBalls2 = 'assets/images/group_balls_2.png';
+  static const profilePicture = 'assets/images/isra.jpeg';
+  static const sitPikachu = 'assets/images/image 9.png';
 }

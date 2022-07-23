@@ -46,7 +46,7 @@ class NeonButton extends StatelessWidget {
                 : SizedBox(
                     width: size.width * 0.12,
                   ),
-            Expanded(
+            Flexible(
               child: Text(
                 text,
                 textAlign: TextAlign.center,
