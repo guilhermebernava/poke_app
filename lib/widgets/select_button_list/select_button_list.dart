@@ -5,6 +5,7 @@ import 'package:poke_app/widgets/select_button/select_button.dart';
 
 class SelectButtonList extends StatelessWidget {
   final Size size;
+
   const SelectButtonList({
     Key? key,
     required this.size,
