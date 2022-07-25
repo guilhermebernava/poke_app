@@ -7,6 +7,35 @@ class PokemonsProvider with ChangeNotifier {
   final List<PokemonModel> _favoritesPokemons = [];
   final List<PokemonModel> _searchedPokemon = [];
   final List<PokemonTypeModel> _types = [];
+  final List<String> _filter = [];
+
+  List<PokemonModel> get pokemons => [..._pokemons];
+  List<PokemonModel> get favoritesPokemons => [..._favoritesPokemons];
+  List<PokemonModel> get pokemonsSearched => [..._searchedPokemon];
+  List<PokemonTypeModel> get types => [..._types];
+  List<String> get filter => [..._filter];
+
+  void addFilter(String name) {
+    if (_filter.contains(name)) {
+      _filter.remove(name);
+    } else if (_filter.length <= 2) {
+      _filter.add(name);
+      notifyListeners();
+    }
+
+    final List<PokemonModel> responseList = [];
+
+    for (var type in _filter) {
+      responseList.addAll(_pokemons
+          .where((favorite) => favorite.types[0].type == type)
+          .toList());
+    }
+    _searchedPokemon.removeWhere((element) => true);
+    _searchedPokemon.addAll(responseList);
+    notifyListeners();
+
+    return;
+  }
 
   void addListPokemons(List<PokemonModel> list) {
     for (var pokemon in list) {
@@ -22,11 +51,6 @@ class PokemonsProvider with ChangeNotifier {
     _types.addAll(list);
     notifyListeners();
   }
-
-  List<PokemonModel> get pokemons => [..._pokemons];
-  List<PokemonModel> get favoritesPokemons => [..._favoritesPokemons];
-  List<PokemonModel> get pokemonsSearched => [..._searchedPokemon];
-  List<PokemonTypeModel> get types => [..._types];
 
   void searchedPokemons(String name) {
     if (name == '') {

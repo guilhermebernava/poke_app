@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:poke_app/providers/pokemons_provider.dart';
+import 'package:poke_app/themes/app_colors.dart';
 import 'package:poke_app/widgets/select_button/select_button_controller.dart';
+import 'package:provider/provider.dart';
 import '../../themes/text_styles.dart';
 
 class SelectButton extends StatelessWidget {
@@ -16,7 +19,7 @@ class SelectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = SelectButtonController();
+    final controller = SelectButtonController(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -25,15 +28,39 @@ class SelectButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
         ),
         label: SizedBox(
-          width: size.width * 0.2,
-          child: Text(
-            text,
-            style: TextStyles.chip,
-            textAlign: TextAlign.center,
+          width: size.width * 0.32,
+          height: size.height * 0.07,
+          child: Consumer<PokemonsProvider>(
+            builder: (context, value, child) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  text,
+                  style: TextStyles.chip,
+                  textAlign: TextAlign.center,
+                ),
+                value.filter.contains(text)
+                    ? const SizedBox(
+                        width: 10,
+                      )
+                    : Container(
+                        width: 0,
+                      ),
+                value.filter.contains(text)
+                    ? const Icon(
+                        Icons.check_circle_rounded,
+                        color: AppColors.white,
+                      )
+                    : Container(
+                        width: 0,
+                      ),
+              ],
+            ),
           ),
         ),
         backgroundColor: color,
-        onSelected: (bool value) => controller.onSelected(value),
+        onSelected: (bool value) => controller.onSelected(text),
       ),
     );
   }
