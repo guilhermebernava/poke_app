@@ -15,10 +15,14 @@ class SelectButtonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Tipos',
-          style: TextStyles.type,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            'Tipos',
+            style: TextStyles.type,
+          ),
         ),
         Consumer<PokemonsProvider>(
           builder: (context, value, child) => SizedBox(
