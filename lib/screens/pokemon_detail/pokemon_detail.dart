@@ -4,7 +4,6 @@ import 'package:poke_app/screens/pokemon_detail/children/pokemon_description/pok
 import 'package:poke_app/screens/pokemon_detail/children/pokemon_image/pokemon_image.dart';
 import 'package:poke_app/screens/pokemon_detail/children/pokemon_info/pokemon_info.dart';
 import 'package:poke_app/screens/pokemon_detail/children/pokemon_status/pokemon_status.dart';
-import 'package:poke_app/themes/app_images.dart';
 import 'package:poke_app/widgets/app_bar_home.dart';
 import 'package:provider/provider.dart';
 

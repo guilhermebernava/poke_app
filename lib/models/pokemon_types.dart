@@ -16,7 +16,7 @@ class PokemonTypeModel {
         colorType = Colors.grey;
         break;
       case 'FIGHTING':
-        colorType = Color(0xffD56723);
+        colorType = const Color(0xffD56723);
         break;
       case 'FLYING':
         colorType = Colors.lightBlue;
@@ -25,13 +25,13 @@ class PokemonTypeModel {
         colorType = Colors.purple;
         break;
       case 'GROUND':
-        colorType = Color(0xffF7DE3F);
+        colorType = const Color(0xffF7DE3F);
         break;
       case 'GHOST':
-        colorType = Color(0xff7B62A3);
+        colorType = const Color(0xff7B62A3);
         break;
       case 'ROCK':
-        colorType = Color(0xffA28C21);
+        colorType = const Color(0xffA28C21);
         break;
       case 'BUG':
         colorType = Colors.lightGreen;
@@ -52,7 +52,7 @@ class PokemonTypeModel {
         colorType = Colors.lightBlueAccent;
         break;
       case 'DRAGON':
-        colorType = Color(0xff54A4CF);
+        colorType = const Color(0xff54A4CF);
         break;
       case 'DARK':
         colorType = Colors.black;

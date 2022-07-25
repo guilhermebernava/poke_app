@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/api/pokemon_endpoints.dart';
-import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/providers/pokemons_provider.dart';
 import 'package:poke_app/screens/pokemon_detail/pokemon_detail.dart';
 import 'package:provider/provider.dart';

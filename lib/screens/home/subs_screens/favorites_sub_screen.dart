@@ -40,6 +40,5 @@ class FavoriteSubScreen extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
