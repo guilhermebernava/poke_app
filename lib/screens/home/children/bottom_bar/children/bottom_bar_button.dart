@@ -7,6 +7,7 @@ class BottomBarButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final VoidCallback onTap;
+  final bool selected;
 
   const BottomBarButton({
     Key? key,
@@ -14,6 +15,7 @@ class BottomBarButton extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.onTap,
+    required this.selected,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,8 @@ class BottomBarButton extends StatelessWidget {
         height: size.height * 0.0795,
         width: size.width * 0.2,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               icon,
@@ -33,7 +37,20 @@ class BottomBarButton extends StatelessWidget {
             Text(
               text,
               style: TextStyles.code,
-            )
+            ),
+            selected
+                ? Container(
+                    width: size.width * 0.07,
+                    margin: const EdgeInsets.only(top: 3),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.blue,
+                        width: 1.5,
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  )
+                : Container()
           ],
         ),
       ),

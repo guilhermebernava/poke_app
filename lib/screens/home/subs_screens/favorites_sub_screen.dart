@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/themes/text_styles.dart';
 import 'package:provider/provider.dart';
-
 import '../../../providers/pokemons_provider.dart';
 import '../../../widgets/pokemon_item/pokemon_item.dart';
 

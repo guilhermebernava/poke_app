@@ -38,7 +38,7 @@ class PokemonItem extends StatelessWidget {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        width: size.width * 0.24,
+                        width: size.width * 0.26,
                         child: Text(
                           model.name,
                           softWrap: true,
@@ -62,7 +62,7 @@ class PokemonItem extends StatelessWidget {
                 Image.network(
                   model.imageUrl,
                   fit: BoxFit.cover,
-                  height: size.width * 0.17,
+                  width: size.width * 0.15,
                 ),
               ],
             ),

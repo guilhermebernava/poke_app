@@ -15,15 +15,21 @@ class HomeController {
     );
   }
 
+  void logout(BuildContext context) =>
+      Navigator.of(context).pushReplacementNamed('/');
+
   Future loadPokemons() async {
-    final list = await pokemonEndpoins.getAllPokemons();
-    final types = await pokemonEndpoins.getAllTypes();
-    if (provider.pokemons.length != list.length) {
-      provider.addListPokemons(list);
+    if (provider.pokemons.isEmpty || provider.types.isEmpty) {
+      final list = await pokemonEndpoins.getAllPokemons();
+      final types = await pokemonEndpoins.getAllTypes();
+      if (provider.pokemons.length != list.length) {
+        provider.addListPokemons(list);
+      }
+      if (provider.types.length != types.length) {
+        provider.addListTypes(types);
+      }
     }
-    if (provider.types.length != types.length) {
-      provider.addListTypes(types);
-    }
+
     return;
   }
 }

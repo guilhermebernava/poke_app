@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/screens/home/children/drawer_button/drawer_button.dart';
+import 'package:poke_app/screens/home/children/drawer_home/drawer_home.dart';
 import 'package:poke_app/screens/home/home_controller.dart';
+import 'package:poke_app/screens/home/subs_screens/account.dart';
 import 'package:poke_app/screens/home/subs_screens/favorites_sub_screen.dart';
 import 'package:poke_app/screens/home/subs_screens/home_sub_screen.dart';
 import 'package:poke_app/widgets/app_bar_home.dart';
@@ -16,7 +18,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final pages = [const HomeSubScreen(), const FavoriteSubScreen(), Container()];
+  final pages = [
+    const HomeSubScreen(),
+    const FavoriteSubScreen(),
+    const Account()
+  ];
 
   int pageIndex = 0;
   @override
@@ -26,8 +32,9 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       key: controller.scaffoldKey,
-      drawer: const Drawer(
-        child: Text('aaa'),
+      drawer: DrawerHome(
+        controller: controller,
+        size: size,
       ),
       appBar: AppBarHome(
         leading: DrawerButton(
@@ -36,6 +43,7 @@ class _HomeState extends State<Home> {
       ),
       body: pages[pageIndex],
       bottomNavigationBar: BottomBar(
+        pageIndex: pageIndex,
         size: size,
         home: () => setState(() {
           pageIndex = 0;

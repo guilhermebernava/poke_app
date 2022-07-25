@@ -4,6 +4,7 @@ import '../../../../themes/app_colors.dart';
 
 class BottomBar extends StatelessWidget {
   final Size size;
+  final int pageIndex;
   final VoidCallback home;
   final VoidCallback favorites;
   final VoidCallback account;
@@ -14,6 +15,7 @@ class BottomBar extends StatelessWidget {
     required this.home,
     required this.favorites,
     required this.account,
+    required this.pageIndex,
   }) : super(key: key);
 
   @override
@@ -35,21 +37,28 @@ class BottomBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BottomBarButton(
+            selected: pageIndex == 0,
             size: size,
             text: 'Home',
-            icon: Icons.home_outlined,
+            icon: pageIndex != 0 ? Icons.home_outlined : Icons.home,
             onTap: home,
           ),
           BottomBarButton(
+            selected: pageIndex == 1,
             size: size,
             text: 'Favorites',
-            icon: Icons.favorite_border_outlined,
+            icon: pageIndex != 1
+                ? Icons.favorite_border_outlined
+                : Icons.favorite,
             onTap: favorites,
           ),
           BottomBarButton(
+            selected: pageIndex == 2,
             size: size,
             text: 'Minha Conta',
-            icon: Icons.account_circle_outlined,
+            icon: pageIndex != 2
+                ? Icons.account_circle_outlined
+                : Icons.account_circle,
             onTap: account,
           ),
         ],

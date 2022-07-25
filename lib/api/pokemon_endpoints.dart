@@ -11,7 +11,7 @@ class PokemonEndpoints {
 
   Future<List<PokemonModel>> getAllPokemons() async {
     final List<PokemonModel> pokemons = [];
-    for (int id = 1; id <= 3; id++) {
+    for (int id = 1; id <= 151; id++) {
       var pokemon = await getPokemon(id.toString());
       pokemons.add(pokemon);
     }

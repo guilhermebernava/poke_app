@@ -34,7 +34,9 @@ class PokemonsProvider with ChangeNotifier {
       notifyListeners();
       return;
     }
-    final list = _pokemons.where((element) => element.name == name).toList();
+    final list = _pokemons
+        .where((element) => element.name == name.toUpperCase())
+        .toList();
 
     if (list.isEmpty) {
       _searchedPokemon.removeWhere((element) => true);

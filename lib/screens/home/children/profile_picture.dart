@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class ProfilePicture extends StatelessWidget {
   final String image;
+  final double width;
+
   const ProfilePicture({
     Key? key,
     required this.image,
+    this.width = 45,
   }) : super(key: key);
 
   @override
@@ -16,7 +19,7 @@ class ProfilePicture extends StatelessWidget {
         bottom: 5,
       ),
       child: SizedBox(
-        width: 45,
+        width: width,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(100),
           child: Image.asset(

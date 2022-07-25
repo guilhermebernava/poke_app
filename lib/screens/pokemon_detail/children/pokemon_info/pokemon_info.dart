@@ -54,7 +54,8 @@ class PokemonInfo extends StatelessWidget {
                 children: [
                   Consumer<PokemonsProvider>(
                     builder: (context, value, child) => InfoButton(
-                      onTap: () => controller.favorite(id),
+                      onTap: () => controller.favorite(
+                          id, context, value.pokemonById(id).favorited),
                       icon: value.pokemonById(id).favorited
                           ? Icons.favorite
                           : Icons.favorite_border_outlined,

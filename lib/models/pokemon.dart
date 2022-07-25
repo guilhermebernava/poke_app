@@ -37,7 +37,7 @@ class PokemonModel {
 
     return PokemonModel(
       id: map['id'],
-      name: map['name'],
+      name: map['name'].toString().toUpperCase(),
       code: map['id'].toString(),
       imageUrl: image,
       status: stats,

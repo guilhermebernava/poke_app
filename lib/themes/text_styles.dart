@@ -11,6 +11,12 @@ class TextStyles {
     );
   }
 
+  static TextStyle drawerTitle = GoogleFonts.nunito(
+    color: AppColors.white,
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle loading = GoogleFonts.nunito(
     color: AppColors.blue,
     fontSize: 40,
