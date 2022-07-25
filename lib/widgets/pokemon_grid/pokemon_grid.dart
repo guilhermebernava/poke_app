@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/themes/app_colors.dart';
-import 'package:poke_app/themes/app_images.dart';
+import 'package:poke_app/providers/pokemons_provider.dart';
 import 'package:poke_app/widgets/pokemon_item/pokemon_item.dart';
+import 'package:provider/provider.dart';
 
 class PokemonGrid extends StatelessWidget {
   final Size size;
@@ -15,20 +15,22 @@ class PokemonGrid extends StatelessWidget {
     return SizedBox(
       height: size.height * 0.37,
       width: double.infinity,
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.2,
+      child: Consumer<PokemonsProvider>(
+        builder: (context, value, child) => GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.2,
+          ),
+          itemBuilder: (context, index) => PokemonItem(
+            size: size,
+            model: value.pokemonsSearched.isNotEmpty
+                ? value.pokemonsSearched[index]
+                : value.pokemons[index],
+          ),
+          itemCount: value.pokemonsSearched.isNotEmpty
+              ? value.pokemonsSearched.length
+              : value.pokemons.length,
         ),
-        itemBuilder: (context, index) => PokemonItem(
-          size: size,
-          image: AppImages.iversaur,
-          name: 'Bulbasaur',
-          type: 'Planta',
-          code: '#001',
-          color: AppColors.gren,
-        ),
-        itemCount: 8,
       ),
     );
   }

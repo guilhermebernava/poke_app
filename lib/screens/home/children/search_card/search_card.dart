@@ -6,12 +6,10 @@ import '../search/search.dart';
 
 class SearchCard extends StatelessWidget {
   final Size size;
-  final TextEditingController searchTextController;
 
   const SearchCard({
     Key? key,
     required this.size,
-    required this.searchTextController,
   }) : super(key: key);
 
   @override
@@ -46,7 +44,6 @@ class SearchCard extends StatelessWidget {
                   ),
                   child: Search(
                     size: size,
-                    textEditController: searchTextController,
                   ),
                 )
               ],

@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:poke_app/models/pokemon.dart';
 import 'package:poke_app/widgets/pokemon_type.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/text_styles.dart';
 import 'pokemon_item_controller.dart';
 
 class PokemonItem extends StatelessWidget {
+  final PokemonModel model;
   final Size size;
-  final String image;
-  final String name;
-  final String type;
-  final String code;
-  final Color color;
-
   const PokemonItem({
     Key? key,
     required this.size,
-    required this.image,
-    required this.name,
-    required this.type,
-    required this.code,
-    required this.color,
+    required this.model,
   }) : super(key: key);
 
   @override
@@ -27,7 +19,7 @@ class PokemonItem extends StatelessWidget {
     final controller = PokemonItemController();
 
     return GestureDetector(
-      onTap: () => controller.redirect(context),
+      onTap: () => controller.redirect(context, model.id),
       child: Card(
         child: Container(
           width: size.width * 0.47,
@@ -46,9 +38,9 @@ class PokemonItem extends StatelessWidget {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        width: size.width * 0.2,
+                        width: size.width * 0.24,
                         child: Text(
-                          name,
+                          model.name,
                           softWrap: true,
                           textAlign: TextAlign.center,
                           style: TextStyles.type,
@@ -56,21 +48,21 @@ class PokemonItem extends StatelessWidget {
                       ),
                     ),
                     PokemonType(
-                      type: type,
-                      color: color,
+                      type: model.types[0].type,
+                      color: model.types[0].colorType,
                       size: size,
                     ),
                     Text(
-                      code,
-                      textAlign: TextAlign.center,
+                      '#${model.code}',
+                      textAlign: TextAlign.start,
                       style: TextStyles.code,
                     )
                   ],
                 ),
-                Image.asset(
-                  image,
+                Image.network(
+                  model.imageUrl,
                   fit: BoxFit.cover,
-                  height: size.width * 0.2,
+                  height: size.width * 0.17,
                 ),
               ],
             ),

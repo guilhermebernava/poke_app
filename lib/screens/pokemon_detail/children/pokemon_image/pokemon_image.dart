@@ -17,7 +17,10 @@ class PokemonImage extends StatelessWidget {
       color: AppColors.grey,
       width: double.infinity,
       height: size.height * 0.3,
-      child: Image.asset(image),
+      child: Image.network(
+        image,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

@@ -18,7 +18,7 @@ class InfoButton extends StatelessWidget {
       icon: Icon(
         icon,
         size: 30,
-        color: AppColors.darkGrey,
+        color: icon == Icons.favorite ? AppColors.red : AppColors.darkGrey,
       ),
     );
   }

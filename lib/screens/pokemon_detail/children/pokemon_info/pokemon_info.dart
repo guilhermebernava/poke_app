@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:poke_app/providers/pokemons_provider.dart';
 import 'package:poke_app/screens/pokemon_detail/children/pokemon_info/children/info_button.dart';
 import 'package:poke_app/screens/pokemon_detail/children/pokemon_info/pokemon_info_controller.dart';
+import 'package:provider/provider.dart';
 import '../../../../themes/text_styles.dart';
 import '../../../../widgets/pokemon_type.dart';
 
 class PokemonInfo extends StatelessWidget {
   final Size size;
+  final int id;
   final String name;
   final String code;
   final String type;
@@ -18,11 +21,12 @@ class PokemonInfo extends StatelessWidget {
     required this.code,
     required this.type,
     required this.typeColor,
+    required this.id,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = PokemonInfoController();
+    final controller = PokemonInfoController(context);
 
     return SizedBox(
       width: size.width,
@@ -48,12 +52,16 @@ class PokemonInfo extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  InfoButton(
-                    onTap: () => controller.favorite(),
-                    icon: Icons.favorite_border_outlined,
+                  Consumer<PokemonsProvider>(
+                    builder: (context, value, child) => InfoButton(
+                      onTap: () => controller.favorite(id),
+                      icon: value.pokemonById(id).favorited
+                          ? Icons.favorite
+                          : Icons.favorite_border_outlined,
+                    ),
                   ),
                   InfoButton(
-                    onTap: () => controller.favorite(),
+                    onTap: () => controller.share(),
                     icon: Icons.share_outlined,
                   ),
                 ],

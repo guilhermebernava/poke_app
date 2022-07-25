@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/themes/app_colors.dart';
+import 'package:poke_app/providers/pokemons_provider.dart';
 import 'package:poke_app/themes/text_styles.dart';
 import 'package:poke_app/widgets/select_button/select_button.dart';
+import 'package:provider/provider.dart';
 
 class SelectButtonList extends StatelessWidget {
   final Size size;
@@ -19,17 +20,19 @@ class SelectButtonList extends StatelessWidget {
           'Tipos',
           style: TextStyles.type,
         ),
-        SizedBox(
-          height: size.height * 0.05,
-          width: double.infinity,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => SelectButton(
-              text: 'Fogo',
-              color: AppColors.red,
-              size: size,
+        Consumer<PokemonsProvider>(
+          builder: (context, value, child) => SizedBox(
+            height: size.height * 0.05,
+            width: double.infinity,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => SelectButton(
+                text: value.types[index].type,
+                color: value.types[index].colorType,
+                size: size,
+              ),
+              itemCount: value.types.length,
             ),
-            itemCount: 10,
           ),
         )
       ],

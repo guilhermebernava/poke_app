@@ -11,6 +11,12 @@ class TextStyles {
     );
   }
 
+  static TextStyle loading = GoogleFonts.nunito(
+    color: AppColors.blue,
+    fontSize: 40,
+    fontWeight: FontWeight.w400,
+  );
+
   static final loginText = GoogleFonts.nunito(
     color: AppColors.blue,
     fontSize: 16,

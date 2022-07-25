@@ -4,16 +4,14 @@ import '../../../../themes/app_colors.dart';
 
 class Search extends StatelessWidget {
   final Size size;
-  final TextEditingController textEditController;
   const Search({
     Key? key,
     required this.size,
-    required this.textEditController,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = SearchController();
+    final controller = SearchController(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +24,7 @@ class Search extends StatelessWidget {
           width: size.width * 0.4,
           height: 35,
           child: TextFormField(
-            controller: textEditController,
+            controller: controller.textEditController,
             maxLines: 1,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(
@@ -40,7 +38,7 @@ class Search extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: controller.onPressed,
+          onTap: () => controller.onPressed(context),
           borderRadius: BorderRadius.circular(5),
           child: Container(
             decoration: BoxDecoration(
