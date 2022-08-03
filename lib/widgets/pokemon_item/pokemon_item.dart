@@ -22,7 +22,7 @@ class PokemonItem extends StatelessWidget {
       onTap: () => controller.redirect(context, model.id),
       child: Card(
         child: Container(
-          width: size.width * 0.47,
+          width: size.width * 0.42,
           height: size.height * 0.15,
           decoration: BoxDecoration(
             color: AppColors.white,
@@ -38,7 +38,7 @@ class PokemonItem extends StatelessWidget {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        width: size.width * 0.26,
+                        width: size.width * 0.24,
                         child: Text(
                           model.name,
                           softWrap: true,

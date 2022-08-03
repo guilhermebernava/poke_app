@@ -13,7 +13,7 @@ class PokemonGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.37,
+      height: size.height * 0.35,
       width: double.infinity,
       child: Consumer<PokemonsProvider>(
         builder: (context, value, child) => GridView.builder(
